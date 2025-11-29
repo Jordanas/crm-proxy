@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CRM Widget</title>
+  <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+  <form id="kommoForm">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required />
+
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" id="phone" required placeholder="+370..." />
+
+    <label for="language">Language:</label>
+    <input type="text" name="language" id="language" required />
+
+    <label for="ownerId">Member Username:</label>
+    <input type="text" name="ownerId" id="ownerId" required />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="widget.js"></script>
+</body>
+</html>
