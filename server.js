@@ -1,9 +1,15 @@
+// server.js
 import express from "express";
 import fetch from "node-fetch";
+import cors from "cors";
 
 const app = express();
+
+// Middleware
+app.use(cors({ origin: "*" })); // leidžia visiems domenams, gali pakeisti į savo svetainę
 app.use(express.json());
 
+// POST /recommend proxy į n8n webhook
 app.post("/recommend", async (req, res) => {
   try {
     const n8nResponse = await fetch(
@@ -31,5 +37,11 @@ app.post("/recommend", async (req, res) => {
   }
 });
 
+// Healthcheck endpoint, kad serveris veiktų ir "/" GET
+app.get("/", (req, res) => {
+  res.send("CRM Proxy is running!");
+});
+
+// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
